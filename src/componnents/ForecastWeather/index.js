@@ -5,20 +5,20 @@ const ForecastWeather = ({ data }) => {
 
     const getFormatDate = (day) => {
         const date = new Date(day.dt_txt.split(' ').join('T'));
-        return `${date.getDay()}/${date.getMonth()}`
+        return `${date.getDate()}/${date.getMonth()}`
     }
 
     return (
         <div className='forecast-container'>
             {
                 data.map(
-                    (weathers) => {
+                    (weathers, id1) => {
                         return ( 
-                        <div className='day-forecast'>
+                        <div className='day-forecast' key={id1}>
                             <h2> {getFormatDate(weathers[0])} </h2>
 
                             <div>
-                                { weathers.map( (elm, id) => <WeatherAtTime key={id} data={elm} />)}
+                                { weathers.map( (elm, id2) => <WeatherAtTime key={id2} data={elm} />)}
                             </div>
                         </div>
                         )

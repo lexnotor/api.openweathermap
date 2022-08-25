@@ -32,7 +32,7 @@ class App extends Component {
             newData[index].push(value);
         });
 
-        this.setState({ climat: newData.slice(0, 4), city: data.city });
+        this.setState({ climat: newData.slice(0, 4), city: data.city, founded: true });
     }
 
     componentDidMount() {
