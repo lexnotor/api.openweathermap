@@ -1,5 +1,7 @@
 body {
   background-image: url('./images/BeFunky-photo.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 .body {
@@ -51,4 +53,15 @@ body {
   100% {
     transform: rotate(360deg);
   }
+}
+
+@media screen and (max-width:1240px) {
+  .body {
+      grid-template-columns: 1fr;
+      grid-template-rows: 2fr auto;
+      margin: 10px 50px 10px 50px;
+      box-shadow: 0 0 16px rgba(34, 37, 37, 0.209);
+      border-radius: 6px;
+      overflow: hidden;
+    }
 }

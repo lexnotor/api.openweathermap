@@ -19,7 +19,10 @@
 .timeforecast {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: flex-start;
+    gap: 20px;
+    flex-wrap: wrap;
+    padding: 20px;
 }
 h2 {
     margin: 5px auto 10px auto;
