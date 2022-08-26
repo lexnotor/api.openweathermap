@@ -12,46 +12,75 @@ class App extends Component {
         key: '6eac00827ba26067a8316bc5e656aea8',
         lat: -1.658684,
         lon: 29.214632,
+        ville: 'Goma',
         climat: [[]],
         city: '',
-        founded: false
+        founded: false,
+        finishRequest: true
     }
 
+    acceptedTime = {6: true, 12: true, 18: true}
+
     trier = (data) => {
+        this.setState({ finishRequest: true });
+        if(!data.list) return
         let [curentDate, index] = [0, -1];
         let newData = [];
 
         data.list.forEach((value) => {
-            const date = new Date(value.dt_txt.split(' ').join('T')).getDate();
+            const date = new Date(value.dt_txt.split(' ').join('T'));
+            const now = new Date();
 
-            if (curentDate !== date) {
+            if (curentDate !== date.getDate()) {
                 index++;
                 newData.push([]);
-                curentDate = date;
+                curentDate = date.getDate();
             }
-            newData[index].push(value);
+            if(this.acceptedTime[date.getHours()] || now.getDay() === date.getDay())
+                newData[index].push(value);
         });
 
-        this.setState({ climat: newData.slice(0, 4), city: data.city, founded: true });
+        this.setState({ climat: newData.slice(0, 3), city: data.city, founded: true });
+    }
+
+    request () {
+        const { ville, key } = { ...this.state};
+        const query = `https://api.openweathermap.org/data/2.5/forecast?q=${ville}&units=metric&lang=fr&appid=${key}`;
+        this.setState({ finishRequest: false });
+        fetch(query)
+            .then(response => response.json())
+            .then(data =>{
+                this.trier(data);
+            })
+            .catch((erro) => {
+                console.log(erro)
+                this.setState({ finishRequest: true })
+            })
     }
 
     componentDidMount() {
-        const { lat, lon, key } = { ...this.state, cnt: 3 };
-        const query = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=metric&lang=fr&appid=${key}`;
-        fetch(query)
-            .then(response => response.json())
-            .then(data => this.trier(data))
-            .catch(error => console.log(error))
+        this.request();
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        if(prevState.ville !== this.state.ville) {
+            this.setState({founded: false})
+            this.request()
+        }
+    }
+
+    changeVille = (ville) => {
+        this.setState({ville: ville})
     }
 
     render() {
 
         return (
             <>
-                <Header />
+                <Header changeVille={this.changeVille} />
                 {
                     this.state.founded ?
-                        <div>
+                        <div className='body'>
                             <TodayWeather 
                                 data={this.state.climat[0]}
                                 city={this.state.city}/>
@@ -60,7 +89,7 @@ class App extends Component {
                             />
                         </div>
                         :
-                        <div className='loading'> Not Found</div>
+                        (<div className={this.finishRequest ? 'nofound' : 'loading'}>  </div>)
                 }
             </>
         )

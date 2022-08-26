@@ -1,38 +1,54 @@
-.App {
+body {
+  background-image: url('./images/BeFunky-photo.jpg');
+}
+
+.body {
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+  margin: 10px 50px 10px 50px;
+  box-shadow: 0 0 16px rgba(34, 37, 37, 0.209);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+
+* {
+  font-family: 'Ubuntu';
+}
+
+.loading {
+  width: 100px;
+  height: 100px;
+  margin: 30vh auto;
+  vertical-align: middle;
   text-align: center;
+  background-color: transparent;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-left: 8px solid rgb(70, 154, 199);
+  border-right: 8px solid rgb(152, 70, 199);
+  border-radius: 50%;
+  animation: linear spin 15 0.5s;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.nofound {
+  width: 100px;
+  height: 100px;
+  margin: 30vh auto;
+  vertical-align: middle;
+  text-align: center;
+  background-color: black;
+  color: aliceblue;
+  font-size: xx-large;
+  
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
+@keyframes spin {
+  0% {
     transform: rotate(0deg);
   }
-  to {
+
+  100% {
     transform: rotate(360deg);
   }
 }

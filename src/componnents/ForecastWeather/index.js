@@ -1,5 +1,6 @@
 import React from 'react'
 import WeatherAtTime from '../WeatherAtTime';
+import './style.css'
 
 const ForecastWeather = ({ data }) => {
 
@@ -17,7 +18,7 @@ const ForecastWeather = ({ data }) => {
                         <div className='day-forecast' key={id1}>
                             <h2> {getFormatDate(weathers[0])} </h2>
 
-                            <div>
+                            <div className='timeforecast'>
                                 { weathers.map( (elm, id2) => <WeatherAtTime key={id2} data={elm} />)}
                             </div>
                         </div>

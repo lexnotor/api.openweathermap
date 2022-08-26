@@ -1,0 +1,30 @@
+.today {
+    background-color: #c8d4ff92;
+    padding: 30px;
+    color: rgb(54, 54, 54);
+}
+.today-forecast {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content:flex-start;
+    gap: 20px;
+}
+.city-name {
+    font-size: 4em;
+    text-align: center;
+    margin: 0px;
+}
+.today-proprety {
+    display: flex;
+    flex-direction: row;
+    margin: 20px auto;
+    color: rgb(13, 41, 67);
+    gap: 10px;
+}
+.today-weather {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    font-size: xxx-large;
+}

@@ -1,0 +1,30 @@
+.weather-at-time {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #0f719f92;
+    text-align: center;
+    border-radius: 5px;
+    width: 150px;
+    color: white;
+    gap: 10px;
+}
+
+.weather-at-time img {
+    width: 50px;
+}
+
+.weather-at-time > span:nth-of-type(1){
+    font-size: large;
+    color: rgb(13, 41, 67); 
+    font-weight: bold;
+}
+.weather-at-time > span:nth-of-type(2){
+    font-size: x-large;
+    color: rgb(13, 41, 67); 
+}
+.weather-at-time > span:nth-of-type(3){
+    font-size: xx-large;
+}
