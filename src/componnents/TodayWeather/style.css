@@ -3,28 +3,53 @@
     padding: 30px;
     color: rgb(54, 54, 54);
 }
+
 .today-forecast {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content:flex-start;
+    justify-content: flex-start;
     gap: 20px;
 }
+
 .city-name {
     font-size: 4em;
     text-align: center;
     margin: 0px;
 }
+
 .today-proprety {
     display: flex;
     flex-direction: row;
+    text-align: center;
     margin: 20px auto;
     color: rgb(13, 41, 67);
     gap: 10px;
 }
+
 .today-weather {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    font-size: xxx-large;
+    font-size: xx-large;
+    border-left: 2px solid rgb(36, 42, 72);
+}
+
+@media screen and (max-width:1240px) {
+    .today-proprety {
+        flex-wrap: wrap;
+        align-items: center;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .today-proprety {
+        flex-wrap: wrap;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .today-weather {
+        border-left: 0px solid rgb(36, 42, 72);
+    }
 }
